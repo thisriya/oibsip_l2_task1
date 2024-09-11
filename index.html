@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="main">
+        <div class="heading">
+        <h1>CALCULATOR</h1>
+        </div>
+
+      
+
+        <div class="buttons">
+            <button class="btn" id="seven button" onclick="appendValue('7')">7</button>
+            <button class="btn" id="eight button" onclick="appendValue('8')">8</button>
+            <button class="btn" id="five button" onclick="appendValue('5')">5</button>
+            <button class="btn" id="plus button" onclick="appendValue('+')">+</button>
+            <button class="btn" id="seven button" onclick="appendValue('4')">4</button>
+            <button class="btn" id="two button" onclick="appendValue('2')">2</button>
+            <button class="btn" id="six button" onclick="appendValue('6')">6</button>
+            <button class="btn" id="divide button" onclick="appendValue('/')">/</button>
+            <button class="btn" id="one button" onclick="appendValue('1')">1</button>
+            <button class="btn" id="nine button" onclick="appendValue('9')">9</button>
+            <button class="btn" id="three button" onclick="appendValue('3')">3</button>
+            <button class="btn" id="multiply button" onclick="appendValue('*')">*</button>
+            <button class="btn" id="del button" onclick="clearDisplay()">del</button>
+            <button class="btn" id="zero button" onclick="appendValue('0')">0</button>
+            <button class="btn" id="dot button" onclick="appendValue('.')">.</button>
+            <button class="btn" id="minus button" onclick="appendValue('-')">-</button>
+            <button class="btn" id="equal button" onclick="cal()">=</button>
+            <!-- <button class="btn" id="ans button" onclick="getanswer()">ans</button> -->
+        </div>
+
+        <!-- <div class="display" id="display"></div> -->
+         <button class="display" id="display"></button>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let currentExpression = '';
+        let lastAns = '';
+
+        function appendValue(value) {
+            currentExpression += value;
+            display.innerText = currentExpression;
+        }
+
+        function cal() {
+            try {
+                lastAns = eval(currentExpression);
+                display.innerText = lastAns;
+                currentExpression = lastAns.toString(); // Update current expression to result
+            } catch (e) {
+                display.innerText = 'Error'; // Handle invalid expressions
+            }
+        }
+
+        function clearDisplay() {
+            currentExpression = '';
+            display.innerText = '';
+        }
+
+        // Function to display the last answer
+        // function getAns() {
+        //     display.innerText = lastAns;
+        // }
+    </script>
+</body>
+</html>
